@@ -1,0 +1,86 @@
+git init                                                  # 初始化本地git??（?建新??）
+git config --global user.name "xxx"                       # 配置用?名
+git config --global user.email "xxx@xxx.com"              # 配置?件
+git config --global color.ui true                         # git status等命令自??色
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global --unset http.proxy                    # remove  proxy configuration on git
+git clone git+ssh://git@192.168.53.168/VT.git             # clone?程??
+git status                                                # 查看?前版本??（是否修改）
+git add xyz                                               # 添加xyz文件至index
+git add .                                                 # 增加?前子目?下所有更改?的文件至index
+git commit -m 'xxx'                                       # 提交
+git commit --amend -m 'xxx'                               # 合并上一次提交（用于反复修改）
+git commit -am 'xxx'                                      # ?add和commit合?一步
+git rm xxx                                                # ?除index中的文件
+git rm -r *                                               # ???除
+git log                                                   # ?示提交日志
+git log -1                                                # ?示1行日志 -n?n行
+git log -5
+git log --stat                                            # ?示提交日志及相???文件
+git log -p -m
+git show dfb02e6e4f2f7b573337763e5c0013802e392818         # ?示某?提交的???容
+git show dfb02                                            # 可只用commitid的前几位
+git show HEAD                                             # ?示HEAD提交日志
+git show HEAD^                                            # ?示HEAD的父（上一?版本）的提交日志 ^^?上??版本 ^5?上5?版本
+git tag                                                   # ?示已存在的tag
+git tag -a v2.0 -m 'xxx'                                  # 增加v2.0的tag
+git show v2.0                                             # ?示v2.0的日志及???容
+git log v2.0                                              # ?示v2.0的日志
+git diff                                                  # ?示所有未添加至index的?更
+git diff --cached                                         # ?示所有已添加index但?未commit的?更
+git diff HEAD^                                            # 比?与上一?版本的差异
+git diff HEAD -- ./lib                                    # 比?与HEAD版本lib目?的差异
+git diff origin/master..master                            # 比??程分支master上有本地分支master上?有的
+git diff origin/master..master --stat                     # 只?示差异的文件，不?示具体?容
+git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加?程定?（用于push/pull/fetch）
+git branch                                                # ?示本地分支
+git branch --contains 50089                               # ?示包含提交50089的分支
+git branch -a                                             # ?示所有分支
+git branch -r                                             # ?示所有原?分支
+git branch --merged                                       # ?示所有已合并到?前分支的分支
+git branch --no-merged                                    # ?示所有未合并到?前分支的分支
+git branch -m master master_copy                          # 本地分支改名
+git checkout -b master_copy                               # ??前分支?建新分支master_copy并?出
+git checkout -b master master_copy                        # 上面的完整版
+git checkout features/performance                         # ?出已存在的features/performance分支
+git checkout --track hotfixes/BJVEP933                    # ?出?程分支hotfixes/BJVEP933并?建本地跟?分支
+git checkout v2.0                                         # ?出版本v2.0
+git checkout -b devel origin/develop                      # ??程分支develop?建新本地分支devel并?出
+git checkout -- README                                    # ?出head版本的README文件（可用于修改??回退）
+git merge origin/master                                   # 合并?程master分支至?前分支
+git cherry-pick ff44785404a8e                             # 合并提交ff44785404a8e的修改
+git push origin master                                    # ??前分支push到?程master分支
+git push origin :hotfixes/BJVEP933                        # ?除?程??的hotfixes/BJVEP933分支
+git push --tags                                           # 把所有tag推送到?程??
+git fetch                                                 # ?取所有?程分支（不更新本地分支，另需merge）
+git fetch --prune                                         # ?取所有原?分支并清除服?器上已?掉的分支
+git pull origin master                                    # ?取?程分支master并merge到?前分支
+git mv README README2                                     # 重命名文件README?README2
+git reset --hard HEAD                                     # ??前版本重置?HEAD（通常用于merge失?回退）
+git rebase
+git branch -d hotfixes/BJVEP933                           # ?除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）
+git branch -D hotfixes/BJVEP933                           # ?制?除分支hotfixes/BJVEP933
+git ls-files                                              # 列出git index包含的文件
+git show-branch                                           # ?示?前分支?史
+git show-branch --all                                     # ?示所有分支?史
+git whatchanged                                           # ?示提交?史??的文件修改
+git revert dfb02e6e4f2f7b573337763e5c0013802e392818       # 撤?提交dfb02e6e4f2f7b573337763e5c0013802e392818
+git ls-tree HEAD                                          # ?部命令：?示某?git?象
+git rev-parse v2.0                                        # ?部命令：?示某?ref?于的SHA1 HASH
+git reflog                                                # ?示所有提交，包括孤立??
+git show HEAD@{5}
+git show master@{yesterday}                               # ?示master分支昨天的??
+git log --pretty=format:'%h %s' --graph                   # ?示提交日志
+git show HEAD~3
+git show -s --pretty=raw 2be7fcb476
+git stash                                                 # ?存?前修改，?所有至?HEAD??
+git stash list                                            # 查看所有?存
+git stash show -p stash@{0}                               # ?考第一次?存
+git stash apply stash@{0}                                 # ?用第一次?存
+git grep "delete from"                                    # 文件中搜索文本“delete from”
+git grep -e '#define' --and -e SORT_DIRENT
+git gc
+git fsck
