@@ -84,3 +84,12 @@ git grep "delete from"                                    # 文件中搜索文本“dele
 git grep -e '#define' --and -e SORT_DIRENT
 git gc
 git fsck
+
+vim 指令
+
+i 進入編輯模式(自由打字啦)
+Esc 退出編輯模式(回到一般模式)
+dd 刪除一行(一般模式下)
+:wq 存檔離開(一般模式下)
+:q! 不存檔直接離開 (一般模式下)
+
